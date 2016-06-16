@@ -1,4 +1,7 @@
 #define DEBUG true // turn debug message on or off in serial
+#define SSID "YOURSSID"
+#define PASS "YOURPASSWD"
+
 #include <SoftwareSerial.h>
 SoftwareSerial Serial1(4,5);
 
@@ -7,12 +10,12 @@ void setup() {
   Serial.begin(9600);
 
   pinMode(13, OUTPUT);
-  digitalWrite(13, HIGH);
+  digitalWrite(13, LOW);
 
   sendData("AT+RST\r\n", 2000, DEBUG); // reset module
   sendData("AT+CWMODE=3\r\n", 1000, DEBUG); // configure as access point
-  sendData("AT+CWJAP=\"YOUR_WIFI_NAME\",\"YOUR_WIFI_PASSWD\"\r\n", 3000, DEBUG); // connect wifi AP
-  sendData("AT+CIFSR\r\n", 1000, DEBUG); // get ip address //192.168.4.1
+  sendData("AT+CWJAP=\"" + SSID + "\",\"" + PASS + "\"\r\n", 3000, DEBUG); // connect wifi AP
+  sendData("AT+CIFSR\r\n", 1000, DEBUG); // get ip address
   sendData("AT+CIPMUX=1\r\n", 1000, DEBUG); // configure for multiple connections
   sendData("AT+CIPSERVER=1,8888\r\n", 1000, DEBUG); // turn on server on port 80
 }
