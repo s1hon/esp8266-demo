@@ -11,7 +11,7 @@ This is a esp8266 json-response with html GET-request example.
 `app.html`  ---Sending a get request--> `esp8266.ino`
 `app.html`  <--Return a json response-- `esp8266.ino`
 
-If you sending a get request by `pin=1`,
+If you sending a get request by `pin=1`,<br>
 and `esp8266.ino` will response a `{ pin:1 }`.
 
 Or sending a get request by `pin=1&status=1`,
